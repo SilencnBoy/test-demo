@@ -1,0 +1,6 @@
+IDE的下载安装
+下载链接：https://www.jetbrains.com/go/download/#section=windows
+
+破解方式：License server方式   http://idea.youbbs.org
+
+工程简历简明教程：https://bingohuang.com/gogland/  字体主题等配置自行google。
