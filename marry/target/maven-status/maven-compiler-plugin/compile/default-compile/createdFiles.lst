@@ -1,0 +1,17 @@
+com\xul\controller\ViewsController.class
+com\xul\dao\IUserDao.class
+com\xul\Interceptor\LoginInterceptor.class
+com\xul\mail\EMailSender.class
+com\xul\service\IUserService.class
+com\xul\controller\FileUpOrDownController.class
+com\xul\mail\HtmlEmail.class
+com\xul\util\ConfigUtil.class
+com\xul\mail\AttachEmailSender.class
+com\xul\util\SendMsgUtil.class
+com\xul\service\impl\UserServiceImp.class
+com\xul\util\HttpRequestUtil.class
+com\xul\controller\UserController.class
+com\xul\entity\User.class
+com\xul\mail\HtmlEmailUseTemplate.class
+com\xul\util\FileOperateUtil.class
+com\xul\job\MyJob.class

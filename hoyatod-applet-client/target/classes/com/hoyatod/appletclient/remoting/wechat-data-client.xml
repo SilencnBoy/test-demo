@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+			
+	<bean id="IWechatDataInterface" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<!-- 重载方法支持 不然会抛出异常 :Caused by: com.caucho.hessian.io.HessianProtocolException: is an unknown code -->
+		<property name="overloadEnabled" value="true" />
+		<property name="serviceUrl">
+			<value>${remoting.wechatdata.server}</value>
+		</property>
+		<property name="serviceInterface" value="com.hoyatod.appletclient.interfaces.IWechatDataInterface"/>
+	</bean>
+	
+</beans>
+
+

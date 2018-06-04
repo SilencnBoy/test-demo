@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hoyatod.dao.IUserDao">
+	
+	
+	<!-- 添加用户 -->
+	<insert id="addUsers" parameterType="User">
+		insert into user(username,password) values(#{username},#{password})
+	</insert>
+		
+	<!-- 通过用户名查找用户 -->
+	<select id="findByUsermame" parameterType="User" resultType="User">
+		select * from user where username = #{username}
+	</select>
+	
+	<!-- 查询所有用户 -->
+	<select id="getUsersList" resultType="User">
+		select * from user
+	</select>
+	
+	<!-- 查询新闻列表 -->
+	<select id="getNewsList" resultType="News">
+		select * from news
+	</select>
+</mapper>

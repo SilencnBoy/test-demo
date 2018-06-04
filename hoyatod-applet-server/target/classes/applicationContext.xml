@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+	
+	<!--开启注解驱动 -->
+	<context:annotation-config/>
+	<context:component-scan base-package ="com.hoyatod.applet">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> 
+	</context:component-scan>
+	
+	<!--贸易财务-->   
+	<bean id="wechatTradeExternalService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="overloadEnabled" value="true" />
+		<property name="serviceUrl" value="http://139.129.233.90:7007/hoyatod-xmk-trade/remoting/wechatTradeExternalService"/>
+	 	<property name="serviceInterface" value="com.hoyatod.xmktrade.client.interfaces.TradeInterface"/> 
+	</bean>
+	
+	<!--PC贸易财务-->   
+	<bean id="financeExporterService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="overloadEnabled" value="true" />
+		<property name="serviceUrl" value="http://139.129.233.90:7005/hoyatod-member-server/remoting/financeExporterService"/>
+	 	<property name="serviceInterface" value="com.hoyatod.member.client.interfaces.FinanceInterface"/> 
+	</bean>
+	
+	<!-- 用户商品接口 -->   
+	<bean id="SaasWechatGoodsInterfaceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="overloadEnabled" value="true" />
+		<property name="serviceUrl" value="http://139.129.233.90:7006/hoyatod-wechatdata-server/remoting/saasWechatGoodsExternalService"/>
+		<property name="serviceInterface" value="com.hoyatod.wechatclient.interfaces.SaasWechatGoodsInterface"/>
+	</bean>
+
+</beans>
+
+

@@ -1,0 +1,83 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+
+		
+		1.spring托管配置文件
+	<util:properties location="classpath:jdbc-config.properties" id="jdbcConfig" />
+
+	2.配置数据库数据源
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		配置数据源基本连接
+		<property name="url" value="#{jdbcConfig.url}" />
+		<property name="driverClassName" value="#{jdbcConfig.driver}" />
+		<property name="username" value="#{jdbcConfig.username}" />
+		<property name="password" value="#{jdbcConfig.password}" />
+		<property name="initialSize" value="#{jdbcConfig.initialSize}" />
+		<property name="maxActive" value="#{jdbcConfig.maxActive}" />
+		<property name="minIdle" value="#{jdbcConfig.minIdle}" />
+		<property name="maxWait" value="#{jdbcConfig.maxWait}" />
+	</bean>
+
+	3.配置会话工厂
+	<bean id="SessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		指定数据源
+		<property name="dataSource" ref="dataSource" />
+		指定mybatis别名扫描
+		<property name="typeAliasesPackage" value="com.mybatis.entity" />
+		扫描映射文件
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:com/xul/mapper/*.xml</value>
+			</list>
+		</property>
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+
+	依赖spring task 任务开启这个配置，spring才能识别@Scheduled注解
+	<task:annotation-driven scheduler="qbScheduler" mode="proxy"/> <task:scheduler 
+		id="qbScheduler" pool-size="10"/>
+
+	4.配置映射扫描
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		配置查询映射接口基础包
+		<property name="basePackage" value="com.mybatis.dao" />
+		配置SQLSessionFactory
+		<property name="sqlSessionFactoryBeanName" value="SessionFactory" />
+	</bean>
+
+	spring托管事务管理器
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	
+	
+	spring托管事务：spring对JDBC事务的支持
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	spring aop注解版
+	<aop:aspectj-autoproxy/>
+	配置版<aop:config>  
+	    <aop:aspect id="logAspect" ref="aspectLog">  
+	        <aop:pointcut id="jLog" expression="execution(* com.xul.service.impl.*Imp.*(..))" />  
+	        <aop:before pointcut-ref="jLog" method="doLog" />  
+	        <aop:after-throwing pointcut-ref="jLog" method="doThrowing" throwing="ex"   
+	        />  
+	    </aop:aspect>  
+	</aop:config>  
+	
+	<bean id="aspectLog" class="com.xul.log.MyLog" />
+	  
+	开启注解驱动
+	<context:annotation-config />
+	<context:component-scan base-package="com.mybatis" />
+</beans> -->

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 测试接口 -->
+	<bean name="/HelloExternalService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref = "HelloServer"/>
+		<property name="serviceInterface" value="com.hoyatod.appletclient.interfaces.IHelloInterface"/>
+	</bean>
+	
+	<!-- 微信网页授权接口 -->
+	<bean name="/WechatDataExternalService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="WechatDataServer"/>
+		<property name="serviceInterface" value="com.hoyatod.applet.service.WechatDataServer"/>
+	</bean>
+	
+	<!-- 微信支付 小程序支付 -->
+	<bean name="/WechatPayExternalService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="WechatDataServer"/>
+		<property name="serviceInterface" value="com.hoyatod.applet.service.WechatPayServer"/>
+	</bean>
+</beans>
+
+

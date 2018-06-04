@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+
+	<!-- t托管邮件发送实现：spring的实现 -->
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	
+		<!-- host配置邮件服务器域名 -->
+		<!-- <property name="host" value="127.0.0.1" /> -->
+		<!-- <property name="host" value="smtp.163.com" /> -->
+		<property name="host" value="smtp.exmail.qq.com" />
+		
+		<!-- 配置邮件发送协议端口 -->
+		<property name="port" value="25" />
+		
+		<!-- 发送者的账户 -->
+		<property name="username" value="xuliang@hoyatod.com" />
+		<property name="password" value="Xl2016" />
+		<!-- <property name="username" value="15897899920" /> 
+		<property name="password" value="xl19890926" />-->
+		
+		<!-- 邮件发送协议 -->
+		<property name="protocol" value="smtp" /> 
+		<property name="defaultEncoding" value="utf-8" />
+		
+		<!--smtps服务验证  配置其他属性 -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<!--  如果是网易邮箱， mail.smtp.starttls.enable 设置为 false -->
+                <prop key="mail.smtp.starttls.enable">true</prop>  
+                <prop key="mail.smtp.timeout">25000</prop>
+                <prop key="mail.transport.protocol">smtps</prop>
+                <prop key="mail.smtp.timeout">25000</prop>  
+                <prop key="mail.smtp.socketFactory.fallback">false</prop>  
+                <!-- 这里是配置ssl 主要是个，Gmail   
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>-->  
+			</props>
+		</property>
+	</bean>
+
+</beans>
