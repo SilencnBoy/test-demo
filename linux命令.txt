@@ -1,0 +1,231 @@
+linux 命令
+
+
+小红帽 redhat
+
+命令 root 登陆
+
+1.startx 图像化界面
+2.reboot 重启（shutdown -r now）
+3.shutdown -h now 关机
+
+
+Linux下vi编辑器的使用
+1.vi Hello.java
+2.输入i[进入输入模式]
+3.输入esc[进入命令模式]
+4.输入 （冒号：）{wq表示退出保存 q！退出不保存}
+
+5.gcc 可以编译c语言
+
+root 存放root用户相关文件
+home 存放普通用户相关文件 
+bin  存放常用命令目录
+sbin 要具有一定权限才可以使用的命令
+mnt  默认挂载光驱和软驱的目录
+etc  存放配置相关文件
+var  存放经常变化的文件
+boot 存放引导相关的文件
+usr  安装软件默认文件夹
+
+显示当前在当前那个路径下
+6.pwd命令
+
+
+root下添加用户home
+
+7.useradd 名字
+8.设密码 passwd 名字
+
+9.userdel 名字（删除用户）                删除用户
+userdel -r 名字（删除用户以及用户主目录）
+
+10. init【0123456】
+运行级别
+0 关机
+1 单用户
+2 多用户状态没有网络服务
+3 多用户状态有网路状态（目前做服务器用3号）
+4 系统未使用保留用户
+5 图形界面（常用3号和5号）
+6 系统重启
+
+设置/etc/inittab id$:initdefault
+
+解决修改错误配置的方法
+在这个启动grub引导界面时，请输入 e
+在选中第二行 再输入e 进入到修改界面 再输入 1[1号运行级别]
+回车 按b 修改3
+
+11.cd 改变目录
+
+12.ls显示文件
+	-a 显示隐藏文件
+	-l 显示长列格式
+13.mkdir建立目录
+14.rmdir删除空目录
+15.touch 建立空文件
+
+16.cp复制命令 cp 文件 路径
+
+17.rm删除文件
+18.mv移动文件和改变文件名 
+
+19.more显示文件内容
+20.less显示文件内容分页
+
+21.|管道命令
+在liunx和unix系统中|就是管道命令
+怎么理解 把上一个命令结果交给这个管道后面的命令处理
+
+22.grep在文本中查询内容
+
+grep （-n显示行数）"查找的内容" 文件名
+
+23.man【手册意思】相当于（help命令）
+
+
+24.find 搜素文件或目录
+find /（根） -name 文件名
+
+查看linux中所有的用户
+25.vi/etc/passwd
+  cat/etc/paasd
+
+- rw- r-- r--  用户创建文件
+
+文件类型 文件所有者的权限  文件所在组对该文件的权限 其他组的用户对该文件的权限
+
+如何修改文件的访问权限的问题 r代表读4 w为2写 不给权限0  x代表可执行1
+
+chmod 777 用户名 （who am i）
+
+usermod -g 组名 用户名
+
+
+jdk安装步骤
+1.把mypackage.iso文件挂载在操作linux系统上
+	在vm做好配置
+mount /mnt/cdrom
+
+2.把安装文件拷贝到/home
+cp 文件 /home
+3.cd/home 切换目录到home
+4.安装 ./文件名.bin解压缩
+5.看一个文件/etc/profile [环境配置文件]
+6.配置自己安装的jdk
+
+7.安装tar -zxvf 文件名.tar.gz
+8.linux 进入图像化界面命令startx
+9.安装tomcat .bin 直接./文件名
+
+
+shell
+查看目前使用的是那种shell
+env         【该命令可以显示当前操作系统的环境变量】
+修改当前的shell
+chsh -s /bin/csh
+
+
+trancert 追踪路由
+
+10.trancert 目标ip/域名
+
+netsend “内容” 192.168.255.255
+
+
+samba服务器安装步骤
+
+1.是否安装samba 先查询 在卸载 主要用到rpm包管理
+
+
+linux 下mysql安装
+1.解压 tar -zxvf 文件名.tar.gz
+2.groupadd mysql（创建一个mysql组，管理）
+  useradd -g mysql mysql （创建mysql用户放在mysql组里面）
+
+	进入mysql文件夹里面
+  scripts/mysql_install_db --user=mysql （初始化数据库）
+  chown -R root .(修改文件所有者).代表当前目录
+  chown -R mysql data （修改data文件夹的所有者）
+  chgrp -R mysql .（改变用户组）
+  启动mysql
+	bin/mysqld_safe --user=mysql & （后台方式启动）
+检查一下 ok 正常启动.
+
+如果希望在任何一个目录下都可以进入mysql则需要再 /root/.bash-profile 添加目录 去对应的用户变量
+
+
+
+
+第一滴血：First Blood 
+双杀：Double Kill 
+三杀：Triple Kill 
+四杀：Quadra Kill 
+五杀：Penta Kill 
+团灭：Aced 
+大杀特杀！（击杀三人）：Killing Spree  
+杀人如麻！（击杀四人）：Rampage 
+势不可挡！（击杀五人）：Unstoppable 
+横扫千军！（击杀六人）：Godlike 
+天下无双（超神）！（击杀七人）：Lengendary 
+我方击杀敌方。：An enemy has been slained. 
+敌方击杀我方。：An ally has been slained. 
+你被敌方击杀。：You have been slained. 
+你击杀了一个敌人。：You have slain an enemy. 
+终结： Shut down! 
+被小兵或机关击杀。： Executed. 
+我方防御塔被摧毁。： Your turret has been destroyed.  
+摧毁敌方防御塔。：Your team has destroyed the turret. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
